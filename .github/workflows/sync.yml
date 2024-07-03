@@ -22,7 +22,7 @@ jobs:
       # Step 3: Initialize repository if empty
       - name: Initialize if empty
         run: |
-          if [ -z "$(git ls-remote https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web-one.git)" ]; then
+          if [ -z "$(git ls-remote https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web.git)" ]; then
             echo "Repository is empty. Initializing..."
             git commit --allow-empty -m "Initial commit"
           fi
