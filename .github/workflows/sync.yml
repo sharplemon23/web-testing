@@ -15,8 +15,8 @@ jobs:
 
       - name: Initialize repository
         run: |
-          git config --global user.name "miguelcolmenareswebdev@gmail.com"
-          git config --global user.email "sharplemon23"
+          git config --global user.name "sochperformance@gmail.com"
+          git config --global user.email "sochperformance"
 
       - name: Mirror repository to client
         env:
