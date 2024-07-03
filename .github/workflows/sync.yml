@@ -19,5 +19,5 @@ jobs:
       run: |
         git config --global user.name "sharplemon23"
         git config --global user.email "miguelcolmenareswebdev@gmail.com"
-        git remote add client https://sochperformance:${CLIENT1_PAT}@github.com/sochperformance/next14.git
+        git remote add client https://sochperformance:${CLIENT1_PAT}@github.com/sochperformance/test-web.git
         git push client main --force
