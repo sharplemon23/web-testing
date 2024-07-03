@@ -20,7 +20,7 @@ jobs:
 
       - name: Push to Client's Repository
         run: |
-          git remote add client https://github.com/sochperformance/test-web.git
+          git remote add client https://github.com/sochperformance/test-web
           git push client HEAD:main
         env:
           PAT: ${{ secrets.CLIENT1_PAT }}
