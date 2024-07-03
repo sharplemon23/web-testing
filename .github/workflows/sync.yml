@@ -13,11 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # Step 2: Configure Git user with your agency's credentials
-      - name: Set up Git user
-        run: |
-          git config --global user.email "miguelcolmenareswebdev@gmail.com"
-          git config --global user.name "sharplemon23"
+    
 
       # Step 3: Sync changes to the client repository
       - name: Sync to Client Repo
