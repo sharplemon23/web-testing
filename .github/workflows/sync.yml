@@ -24,7 +24,7 @@ jobs:
         env:
           CLIENT_PAT: ${{ secrets.CLIENT1_PAT }}
         run: |
-          git remote add client https://sharplemon23:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web.git
+          git remote add client https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web.git
           if [ -z "$(git ls-remote client)" ]; then
             echo "Repository is empty. Initializing..."
             git checkout --orphan temp
