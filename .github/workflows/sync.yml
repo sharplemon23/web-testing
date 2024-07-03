@@ -25,4 +25,11 @@ jobs:
           CLIENT_PAT: ${{ secrets.CLIENT_PAT }}
         run: |
           git remote add client https://sochperformance:${{ secrets.CLIENT_PAT }}@github.com/sochperformance/test-web.git
-          git push client main --force
+          if [ -z "$(git ls-remote client)" ]; then
+            echo "Repository is empty. Initializing..."
+            git checkout --orphan temp
+            git commit --allow-empty -m "Initial commit"
+            git push client temp:main
+            git branch -D temp
+          else
+            git push client main --force
