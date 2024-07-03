@@ -1,23 +1,26 @@
-name: Sync to Client Repo
+name: Update Client Repository
 
 on:
   push:
     branches:
-      - main
+      - main  # Adjust if your main branch is named differently
 
 jobs:
-  sync:
+  update-client:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Sync to client repo
-      env:
-        CLIENT1_PAT: ${{ secrets.CLIENT1_PAT }}
-      run: |
-        git config --global user.name "sochperformance"
-        git config --global user.email "sochperformance@gmail.com"
-        git remote add client https://sochperformance:${CLIENT1_PAT}@github.com/sochperformance/test-web.git
-        git push client main --force
+      - name: Set up Git
+        run: |
+          git config --global user.email "miguelcolmenareswebdev@gmail.com"
+          git config --global user.name "sharplemon23"
+
+      - name: Push to Client's Repository
+        run: |
+          git remote add client https://github.com/sochperformance/test-web.git
+          git push client HEAD:main
+        env:
+          PAT: ${{ secrets.CLIENT1_PAT }}
