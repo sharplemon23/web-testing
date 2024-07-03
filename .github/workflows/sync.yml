@@ -1,4 +1,4 @@
-name: Sync Client Repository
+name: Sync to Client Repo
 
 on:
   push:
@@ -6,30 +6,16 @@ on:
       - main
 
 jobs:
-  sync-client:
+  sync:
     runs-on: ubuntu-latest
+
     steps:
-      # Step 1: Check out the repository
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Step 2: Configure Git user with your agency's credentials
-      - name: Set up Git user
-        run: |
-          git config --global user.email "miguelcolmenareswebdev@gmail.com"
-          git config --global user.name "sharplemon23"
-
-      # Step 3: Sync changes to the client repository
-      - name: Sync to Client Repo
+      - name: Mirror repository to client
         env:
           CLIENT_PAT: ${{ secrets.CLIENT1_PAT }}
         run: |
-          git remote add client https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web.git
-          if [ -z "$(git ls-remote client)" ]; then
-            echo "Repository is empty. Initializing..."
-            git checkout --orphan temp
-            git commit --allow-empty -m "Initial commit"
-            git push client temp:main
-            git branch -D temp
-          else
-            git push client main --force
+          git remote add client https://sochperformance:${{ secrets.CLIENT_PAT }}@github.com/sochperformance/test-web.git
+          git push client main --force
