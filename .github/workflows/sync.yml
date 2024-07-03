@@ -1,8 +1,23 @@
-- name: Sync to client repo
-  env:
-    CLIENT1_PAT: ${{ secrets.CLIENT1_PAT }}
-  run: |
-    git config --global user.name "sochperformance"
-    git config --global user.email "sochperformance@gmail.com"
-    git remote add client https://github.com/sochperformance/test-web.git
-    git push client main --force
+name: Sync to Client Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Sync to client repo
+      env:
+        CLIENT1_PAT: ${{ secrets.CLIENT1_PAT }}
+      run: |
+        git config --global user.name "sochperformance"
+        git config --global user.email "sochperformance@gmail.com"
+        git remote add client https://sochperformance:${CLIENT1_PAT}@github.com/sochperformance/test-web.git
+        git push client main --force
