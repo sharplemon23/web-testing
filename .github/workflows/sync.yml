@@ -22,9 +22,9 @@ jobs:
       # Step 3: Sync changes to the client repository
       - name: Sync to Client Repo
         env:
-          CLIENT_PAT: ${{ secrets.CLIENT_PAT }}
+          CLIENT_PAT: ${{ secrets.CLIENT1_PAT }}
         run: |
-          git remote add client https://sochperformance:${{ secrets.CLIENT_PAT }}@github.com/sochperformance/test-web.git
+          git remote add client https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web.git
           if [ -z "$(git ls-remote client)" ]; then
             echo "Repository is empty. Initializing..."
             git checkout --orphan temp
