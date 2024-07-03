@@ -15,8 +15,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.email "miguelcolmenareswebdev@gmail.com"
-          git config --global user.name "sharplemon23"
+          git config --global user.email "bot@noreply.github.com"
+          git config --global user.name "Git bot"
 
       - name: Push to Client's Repository
         run: |
