@@ -16,5 +16,5 @@ jobs:
         env:
           CLIENT1_PAT: ${{ secrets.CLIENT1_PAT }}
         run: |
-          git remote add client https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/testing-web.git
+          git remote add client https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web.git
           git push client main --force
