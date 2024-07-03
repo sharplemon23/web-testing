@@ -1,0 +1,20 @@
+name: Update Client Repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Sync to Client Repo
+        env:
+          CLIENT1_PAT: ${{ secrets.CLIENT1_PAT }}
+        run: |
+          git remote add client https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/testing-web.git
+          git push client main --force
