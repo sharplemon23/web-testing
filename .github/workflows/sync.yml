@@ -1,5 +1,3 @@
-
-
 name: Update Client Repository
 
 on:
@@ -15,15 +13,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # Step 2: Initialize repository if empty
+      # Step 2: Configure Git user
+      - name: Set up Git user
+        run: |
+          git config --global user.email "sochperformance@gmail.com"
+          git config --global user.name "sochperformance"
+
+      # Step 3: Initialize repository if empty
       - name: Initialize if empty
         run: |
-          if [ -z "$(git ls-remote client)" ]; then
+          if [ -z "$(git ls-remote https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web-one.git)" ]; then
             echo "Repository is empty. Initializing..."
             git commit --allow-empty -m "Initial commit"
           fi
 
-      # Step 3: Sync changes to the client repository
+      # Step 4: Sync changes to the client repository
       - name: Sync to Client Repo
         env:
           CLIENT1_PAT: ${{ secrets.CLIENT1_PAT }}
