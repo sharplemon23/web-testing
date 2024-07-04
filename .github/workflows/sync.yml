@@ -26,5 +26,5 @@ jobs:
         env:
           CLIENT_PATH: ${{ secrets.CLIENT_PATH }}
         run: |
-          git remote add client1 https://sochperformance:${CLIENT_PATH}@github.com/sochperformance/test-web.git
-          git push client1 main --force
+          git remote add client https://sochperformance:${CLIENT_PATH}@github.com/sochperformance/test-web.git
+          git push client main --force
