@@ -12,12 +12,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
-      - name: Sync with Client  Repository
+      - name: Ensure initial commit
+        run: |
+          if [ "$(git rev-parse --is-inside-work-tree)" != "true" ]; then
+            git init
+            echo "# Initial Commit" > README.md
+            git add README.md
+            git commit -m "Initial commit"
+          fi
+      
+      - name: Sync with Client Repository
         if: success()
         env:
           CLIENT_PATH: ${{ secrets.CLIENT_PATH }}
         run: |
           git remote add client1 https://sharplemon23:${CLIENT_PATH}@github.com/sochperformance/test-web.git
           git push client1 main --force
-
-     
