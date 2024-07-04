@@ -1,4 +1,4 @@
-name: Sync to Client Repo
+name: Sync to Client Repositories
 
 on:
   push:
@@ -8,14 +8,16 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Check repository URL
+      
+      - name: Sync with Client  Repository
+        if: success()
+        env:
+          CLIENT_PAT: ${{ secrets.CLIENT_PAT }}
         run: |
-          echo "Repository URL: https://sochperformance:${{ secrets.CLIENT_PAT }}@github.com/sochperformance/test-web.git"
-          git remote add client https://sochperformance:${{ secrets.CLIENT_PAT }}@github.com/sochperformance/test-web.git
-          git remote -v
-          git push client main --force
+          git remote add client1 https://sharplemon23:${CLIENT_PAT}@github.com/sochperformance/test-web.git
+          git push client1 main --force
+
+     
