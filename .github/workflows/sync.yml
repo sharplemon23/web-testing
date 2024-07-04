@@ -15,7 +15,7 @@ jobs:
 
       - name: Check repository URL
         run: |
-          echo "Repository URL: https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web.git"
-          git remote add client https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web.git
+          echo "Repository URL: https://sochperformance:${{ secrets.CLIENT_PAT }}@github.com/sochperformance/test-web.git"
+          git remote add client https://sochperformance:${{ secrets.CLIENT_PAT }}@github.com/sochperformance/test-web.git
           git remote -v
           git push client main --force
