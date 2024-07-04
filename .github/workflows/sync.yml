@@ -15,9 +15,9 @@ jobs:
       - name: Sync with Client  Repository
         if: success()
         env:
-          CLIENT_PAT: ${{ secrets.CLIENT_PAT }}
+          CLIENT_PATH: ${{ secrets.CLIENT_PATH }}
         run: |
-          git remote add client1 https://sharplemon23:${CLIENT_PAT}@github.com/sochperformance/test-web.git
+          git remote add client1 https://sharplemon23:${CLIENT_PATH}@github.com/sochperformance/test-web.git
           git push client1 main --force
 
      
