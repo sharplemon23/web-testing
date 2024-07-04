@@ -15,12 +15,12 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.email "bot@noreply.github.com"
-          git config --global user.name "Git bot"
+          git config --global user.email "miguelcolmenareswebdev@gmail.com"
+          git config --global user.name "sharplemon23"
 
       - name: Push to Client's Repository
         run: |
-          git remote add client https://github.com/sochperformance/test-web
+          git remote add client https://github.com/sochperformance/test-web.git
           git push client HEAD:main
         env:
           PAT: ${{ secrets.CLIENT1_PAT }}
