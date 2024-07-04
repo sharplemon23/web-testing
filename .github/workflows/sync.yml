@@ -13,9 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Mirror repository to client
-        env:
-          CLIENT_PAT: ${{ secrets.CLIENT1_PAT }}
+      - name: Check repository URL
         run: |
+          echo "Repository URL: https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web.git"
           git remote add client https://sochperformance:${{ secrets.CLIENT1_PAT }}@github.com/sochperformance/test-web.git
+          git remote -v
           git push client main --force
